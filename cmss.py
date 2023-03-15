@@ -139,6 +139,7 @@ def scraping(url, seller):
             soup2 = BeautifulSoup(line, "html.parser")
             name_info = soup2.findAll("div", class_="row no-gutters")
             temp = re.findall(r'<a(.*?)</a>', str(name_info[0]))[0]
+            card_link = "https://www.cardmarket.com" + re.findall(r'href="(.*?)"', str(temp))[0]
             name = re.findall(r'">(.*?)$', temp)[0]
             mouse_overs = re.findall(r'title="(.*?)"', str(div))
             if "&lt;img" in mouse_overs[0]:
@@ -152,9 +153,11 @@ def scraping(url, seller):
             current += lst
             price = re.findall(r'<span class="font-weight-bold color-primary small '
                                r'text-right text-nowrap">(.*?)</span>', str(div))[0]
+
             current.append(price)
             quantity = re.findall(r'<span class="item-count small text-right">(.*?)</span>', str(div))[0]
             current.append(quantity)
+            current.append(card_link)
             out.append(current)
         return out
     else:
@@ -200,7 +203,7 @@ def main(url, filename):
         pbar1.update(1)
     with open(filename, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(['seller', 'expansion', 'name', 'rarity', 'condition', 'language', 'price', 'quantity'])
+        writer.writerow(['seller', 'expansion', 'name', 'rarity', 'condition', 'language', 'price', 'quantity', 'url'])
         for line in all:
             writer.writerow(line)
     if len(error_pages) > 0:
