@@ -25,4 +25,5 @@ options:
 (I used this because it's a top seller on Cardmarket)
 
 ## Output :
+Note : When opening the csv, you have to use `,` as delimiter and `"` as string delimiter.      
 ![image](https://user-images.githubusercontent.com/32172257/225276020-747e3211-38ae-4258-bc93-dd3d581e26c0.png)
