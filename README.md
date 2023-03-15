@@ -26,4 +26,4 @@ options:
 
 ## Output :
 Note : When opening the csv, you have to use `,` as delimiter and `"` as string delimiter.      
-![image](https://user-images.githubusercontent.com/32172257/225276020-747e3211-38ae-4258-bc93-dd3d581e26c0.png)
+![image](https://user-images.githubusercontent.com/32172257/225280387-5f5b326d-bcf0-4f94-829a-2bb8a67b4a75.png)
