@@ -143,6 +143,11 @@ def scraping(url, seller):
             mouse_overs = re.findall(r'title="(.*?)"', str(div))
             if "&lt;img" in mouse_overs[0]:
                 mouse_overs = mouse_overs[1:]
+            infos_list = mouse_overs.copy()
+            for i in range(1, len(mouse_overs)):
+                if mouse_overs[i] == mouse_overs[i-1] :
+                    infos_list.remove(mouse_overs[i])
+            mouse_overs = infos_list
             lst = [mouse_overs[0], name, mouse_overs[1], mouse_overs[2], mouse_overs[3]]
             current += lst
             price = re.findall(r'<span class="font-weight-bold color-primary small '
